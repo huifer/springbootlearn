@@ -1,5 +1,27 @@
 # Spring Boot JPA
-## 
+## 配置
+<table cellspacing="0" border="0">
+	<colgroup width="161"></colgroup>
+	<colgroup width="181"></colgroup>
+	<colgroup width="393"></colgroup>
+	<tbody><tr>
+		<td height="18" align="left" valign="middle"><font face="DejaVu Sans" color="#000000">配置</font></td>
+		<td align="left" valign="middle"><font face="DejaVu Sans" color="#000000">值</font></td>
+		<td align="left" valign="middle"><font face="DejaVu Sans" color="#000000">说明</font></td>
+	</tr>
+	<tr>
+		<td height="198" align="left" valign="middle"><font color="#000000">spring.jpa.database</font></td>
+		<td align="left" valign="middle"><font color="#000000">1.DEFAULT<br>2.DB2<br>3.DERBY<br>4.H2<br>5.HSQL<br>6.INFORMIX<br>7.MYSQL<br>8.ORACLE<br>9.POSTGRESQL<br>10.SQL_SERVER<br>11.SYBASE</font></td>
+		<td align="left" valign="middle"><font face="DejaVu Sans" color="#000000">支持数据库种类</font></td>
+	</tr>
+	<tr>
+		<td height="126" align="left" valign="middle"><font color="#000000">spring.jpa.hibernate.ddl-auto</font></td>
+		<td align="left" valign="middle"><font color="#000000">1.validate<br>2.create<br>3.create-drop<br>4.update</font></td>
+		<td align="left" valign="middle"><font face="DejaVu Sans" color="#000000">1.validate 加载 Hibernate 时，验证创建数据库表结构<br>2.create 每次加载 Hibernate ，重新创建数据库表结构，这就是导致数据库表数据丢失的原因。<br>3.create-drop 加载 Hibernate 时创建，退出是删除表结构<br>4.update 加载 Hibernate 自动更新数据库结构</font></td>
+	</tr>
+</tbody></table>
+
+## 常用注解 
 <table cellspacing="0" border="0">
 	<colgroup width="161"></colgroup>
 	<colgroup width="181"></colgroup>
@@ -44,87 +66,7 @@
 	<tr>
 		<td height="72" align="left" valign="middle"><font color="#000000">@Temporal</font></td>
 		<td align="left" valign="middle"><font color="#000000">TemporalType.DATE<br>TemporalType.TIME<br>TemporalType.TIMESTAMP</font></td>
-		<td align="left" valign="middle"><font color="#000000">@Temporal(TemporalType.DATE)<br>'@Temporal(TemporalType.TIME) <br>'@Temporal(TemporalType.TIMESTAMP) </font></td>
+		<td align="left" valign="middle"><font color="#000000">@Temporal(TemporalType.DATE)<br>@Temporal(TemporalType.TIME) <br>@Temporal(TemporalType.TIMESTAMP) </font></td>
 		<td align="left" valign="middle"><font face="DejaVu Sans" color="#000000">@Temporal(TemporalType.DATE) 表示映射到数据库中的时间类型为 DATE，只有日期<br>@Temporal(TemporalType.TIME) 表示映射到数据库中的时间类型为 TIME，只有时间<br>@Temporal(TemporalType.TIMESTAMP) 表示映射到数据库中的时间类型为 TIMESTAMP,日期和时间都有</font></td>
 	</tr>
 </tbody></table>
-
-## 搜索Query注解
-<table>
-   <tbody><tr>
-   		<td height="18" align="left" valign="middle"><font face="DejaVu Sans Mono" color="#000000">关键词</font></td>
-   		<td align="left" valign="middle"><font face="DejaVu Sans Mono" color="#000000">实例</font></td>
-   		<td align="left" valign="middle"><font color="#000000">sql</font></td>
-   	</tr>
-   	<tr>
-   		<td height="18" align="left" valign="middle"><font color="#000000">And</font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   	</tr>
-   	<tr>
-   		<td height="18" align="left" valign="middle"><font color="#000000">Or</font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   	</tr>
-   	<tr>
-   		<td height="18" align="left" valign="middle"><font color="#000000">Between</font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   	</tr>
-   	<tr>
-   		<td height="18" align="left" valign="middle"><font color="#000000">LessThan</font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   	</tr>
-   	<tr>
-   		<td height="18" align="left" valign="middle"><font color="#000000">GreaterThan</font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   	</tr>
-   	<tr>
-   		<td height="18" align="left" valign="middle"><font color="#000000">IsNull</font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   	</tr>
-   	<tr>
-   		<td height="18" align="left" valign="middle"><font color="#000000">IsNotNull</font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   	</tr>
-   	<tr>
-   		<td height="18" align="left" valign="middle"><font color="#000000">NotNull</font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   	</tr>
-   	<tr>
-   		<td height="18" align="left" valign="middle"><font color="#000000">Like</font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   	</tr>
-   	<tr>
-   		<td height="18" align="left" valign="middle"><font color="#000000">NotLike</font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   	</tr>
-   	<tr>
-   		<td height="18" align="left" valign="middle"><font color="#000000">OrderBy</font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   	</tr>
-   	<tr>
-   		<td height="18" align="left" valign="middle"><font color="#000000">Not</font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   	</tr>
-   	<tr>
-   		<td height="18" align="left" valign="middle"><font color="#000000">In</font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   	</tr>
-   	<tr>
-   		<td height="18" align="left" valign="middle"><font color="#000000">NotIn</font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   		<td align="left" valign="middle"><font color="#000000"><br></font></td>
-   	</tr>
-   </tbody>
-</table>

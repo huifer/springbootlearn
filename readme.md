@@ -4,3 +4,4 @@
 - [Spring Boot Servlet](lesson03/readme.md)
 - [Spring Boot JDBC](lesson04/readme.md)
 - [Spring Boot MyBatis](lesson05/readme.md)
+- [Spring Boot JPA](lesson06/readme.md)

@@ -6,3 +6,4 @@
 - [Spring Boot MyBatis](lesson05/readme.md)
 - [Spring Boot JPA](lesson06/readme.md)
 - [Spring Boot Redis](lesson07/readme.md)
+- [Spring Boot 全局异常](lesson08/readme.md)

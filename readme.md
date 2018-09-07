@@ -7,3 +7,4 @@
 - [Spring Boot JPA](lesson06/readme.md)
 - [Spring Boot Redis](lesson07/readme.md)
 - [Spring Boot 全局异常](lesson08/readme.md)
+- [Spring Boot 验证](lesson09/readme.md)

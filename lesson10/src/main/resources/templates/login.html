@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+<h1>111</h1>
+
+<form id="form" method="post">
+
+    <lable> 用户名:</lable>
+    <input type="text" name="username" value=""/>
+    <lable> 密码:</lable>
+    <input type="password" name="password" value=""/>
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+    <br/>
+    <input type="submit" value="登录">
+
+</form>
+
+
+</body>
+</html>

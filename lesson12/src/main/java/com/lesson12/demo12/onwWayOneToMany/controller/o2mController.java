@@ -1,16 +1,15 @@
-package com.lesson12.demo12.oneToMany.controller;
+package com.lesson12.demo12.onwWayOneToMany.controller;
 
-import com.lesson12.demo12.oneToMany.entity.ProductTypeom;
-import com.lesson12.demo12.oneToMany.entity.Productom;
-import com.lesson12.demo12.oneToMany.repo.ProductTypeomRepo;
-import com.lesson12.demo12.oneToMany.repo.ProductomRepo;
-import javax.sql.DataSource;
+import com.lesson12.demo12.onwWayOneToMany.entity.ProductTypeom;
+import com.lesson12.demo12.onwWayOneToMany.entity.Productom;
+import com.lesson12.demo12.onwWayOneToMany.repo.ProductTypeomRepo;
+import com.lesson12.demo12.onwWayOneToMany.repo.ProductomRepo;
+import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>Title : o2mController </p>
@@ -42,12 +41,20 @@ public class o2mController {
         type.getProducts().add(product2);
 
         productTypeomRepo.save(type);
-        ProductTypeom type2 = new ProductTypeom();
-        type2.setName("类型2");
-        type2.getProducts().add(product1);
-        type2.getProducts().add(product2);
-        productTypeomRepo.save(type2);
     }
 
+    @GetMapping("/otm/find")
+    @ResponseBody
+    public Optional findone(){
+        Optional<ProductTypeom> byId = productTypeomRepo.findById(1L);
+        return byId;
+    }
+
+    @GetMapping("/otm/findPr")
+    @ResponseBody
+    public List findAll(){
+        List<Productom> all = productomRepo.findAll();
+        return all;
+    }
 
 }

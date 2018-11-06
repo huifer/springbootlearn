@@ -1,6 +1,6 @@
-package com.lesson12.demo12.manyToOne.repo;
+package com.lesson12.demo12.onwWayManyToOne.repo;
 
-import com.lesson12.demo12.manyToOne.entity.Product;
+import com.lesson12.demo12.onwWayManyToOne.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

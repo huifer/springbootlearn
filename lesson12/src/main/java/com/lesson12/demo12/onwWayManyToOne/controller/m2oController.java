@@ -1,12 +1,10 @@
-package com.lesson12.demo12.manyToOne.controller;
+package com.lesson12.demo12.onwWayManyToOne.controller;
 
-import com.lesson12.demo12.manyToOne.entity.Product;
-import com.lesson12.demo12.manyToOne.entity.ProductType;
-import com.lesson12.demo12.manyToOne.repo.ProductRepo;
-import com.lesson12.demo12.manyToOne.repo.ProductTypeRepo;
-import javax.sql.DataSource;
+import com.lesson12.demo12.onwWayManyToOne.entity.Product;
+import com.lesson12.demo12.onwWayManyToOne.entity.ProductType;
+import com.lesson12.demo12.onwWayManyToOne.repo.ProductRepo;
+import com.lesson12.demo12.onwWayManyToOne.repo.ProductTypeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.datasource.init.DataSourceInitializer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

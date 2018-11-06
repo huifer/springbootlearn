@@ -1,6 +1,6 @@
-package com.lesson12.demo12.oneToMany.repo;
+package com.lesson12.demo12.onwWayOneToMany.repo;
 
-import com.lesson12.demo12.oneToMany.entity.Productom;
+import com.lesson12.demo12.onwWayOneToMany.entity.Productom;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

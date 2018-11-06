@@ -3,7 +3,7 @@
 
 - 产品
 ```java
-package com.lesson12.demo12.manyToOne.entity;
+package com.lesson12.demo12.onwWayManyToOne.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -78,7 +78,7 @@ public class Product {
 ```
 - 产品类型
 ```java
-package com.lesson12.demo12.manyToOne.entity;
+package com.lesson12.demo12.onwWayManyToOne.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -133,12 +133,12 @@ public class ProductType {
 ```
 - controller
 ```java
-package com.lesson12.demo12.manyToOne.controller;
+package com.lesson12.demo12.onwWayManyToOne.controller;
 
-import com.lesson12.demo12.manyToOne.entity.Product;
-import com.lesson12.demo12.manyToOne.entity.ProductType;
-import com.lesson12.demo12.manyToOne.repo.ProductRepo;
-import com.lesson12.demo12.manyToOne.repo.ProductTypeRepo;
+import com.lesson12.demo12.onwWayManyToOne.entity.Product;
+import com.lesson12.demo12.onwWayManyToOne.entity.ProductType;
+import com.lesson12.demo12.onwWayManyToOne.repo.ProductRepo;
+import com.lesson12.demo12.onwWayManyToOne.repo.ProductTypeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -179,6 +179,7 @@ public class m2oController {
 }
 
 ```
+
 - 执行以及异常修改
   - 第一次运行项目
     - 异常
@@ -209,4 +210,199 @@ public class m2oController {
 
 
 ## 一对多 单向
+
+- 产品
+```java
+package com.lesson12.demo12.onwWayOneToMany.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+/**
+ * <p>Title : Productom </p>
+ * <p>Description : 产品</p>
+ *
+ * @author huifer
+ * @date 2018/11/05
+ */
+@Entity
+@Table(name = "t_product_otm")
+public class Productom {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+
+    public Productom() {
+
+    }
+
+    public Productom(String name) {
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Productom{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
+}
+
+```
+
+- 产品类型
+```java
+package com.lesson12.demo12.onwWayOneToMany.entity;
+
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+/**
+ * <p>Title : ProductTypeom </p>
+ * <p>Description : 产品类型 一对多</p>
+ *
+ * @author huifer
+ * @date 2018/11/05
+ */
+@Entity
+@Table(name = "t_product_type_otm")
+public class ProductTypeom {
+    @Id
+    @GeneratedValue
+    private Long id;
+    private String name;
+    @OneToMany(cascade= CascadeType.ALL)
+    @JoinColumn(name = "type_id")
+    private Set<Productom> products = new HashSet<Productom>();
+
+    public ProductTypeom() {
+    }
+
+    @Override
+    public String toString() {
+        return "ProductTypeom{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", products=" + products +
+                '}';
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<Productom> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Productom> products) {
+        this.products = products;
+    }
+}
+
+```
+
+- controller
+```java
+package com.lesson12.demo12.onwWayOneToMany.controller;
+
+import com.lesson12.demo12.onwWayOneToMany.entity.ProductTypeom;
+import com.lesson12.demo12.onwWayOneToMany.entity.Productom;
+import com.lesson12.demo12.onwWayOneToMany.repo.ProductTypeomRepo;
+import com.lesson12.demo12.onwWayOneToMany.repo.ProductomRepo;
+import javax.sql.DataSource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.Mapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * <p>Title : o2mController </p>
+ * <p>Description : todo</p>
+ *
+ * @author huifer
+ * @date 2018/11/05
+ */
+@Controller
+public class o2mController {
+
+    @Autowired
+    private ProductomRepo productomRepo;
+
+    @Autowired
+    private ProductTypeomRepo productTypeomRepo;
+
+
+    @GetMapping("/otm")
+    @ResponseBody
+    public void otm(){
+        ProductTypeom type = new ProductTypeom();
+        type.setName("类型1");
+
+        Productom product1 = new Productom("产品1");
+        Productom product2 = new Productom("产品2");
+
+        type.getProducts().add(product1);
+        type.getProducts().add(product2);
+
+        productTypeomRepo.save(type);
+        ProductTypeom type2 = new ProductTypeom();
+        type2.setName("类型2");
+        type2.getProducts().add(product1);
+        type2.getProducts().add(product2);
+        productTypeomRepo.save(type2);
+    }
+
+
+}
+
+```
+
+- 执行以及异常修改
+  - 没有异常数据成功插入
+![一对多单向](pic/otm.png)
+
+
 

@@ -1,4 +1,4 @@
-package com.lesson12.demo12.manyToOne.entity;
+package com.lesson12.demo12.onwWayManyToOne.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

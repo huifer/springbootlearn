@@ -1,9 +1,10 @@
-package com.lesson12.demo12.oneToMany.entity;
+package com.lesson12.demo12.onwWayOneToMany.entity;
 
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -24,7 +25,9 @@ public class ProductTypeom {
     @GeneratedValue
     private Long id;
     private String name;
-    @OneToMany(cascade= CascadeType.ALL)
+
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,targetEntity = Productom.class)
     @JoinColumn(name = "type_id")
     private Set<Productom> products = new HashSet<Productom>();
 

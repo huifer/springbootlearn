@@ -1,4 +1,4 @@
-package com.lesson12.demo12.oneToMany.entity;
+package com.lesson12.demo12.onwWayManyToOne.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,26 +7,30 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * <p>Title : Productom </p>
- * <p>Description : 产品</p>
+ * <p>Title : ProductType </p>
+ * <p>Description : 产品类型</p>
  *
  * @author huifer
  * @date 2018/11/05
  */
 @Entity
-@Table(name = "t_product_otm")
-public class Productom {
+@Table(name = "t_product_type")
+public class ProductType {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
-    public Productom() {
-
+    @Override
+    public String toString() {
+        return "ProductType{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 
-    public Productom(String name) {
-        this.name = name;
+    public ProductType() {
     }
 
     public Long getId() {
@@ -43,13 +47,5 @@ public class Productom {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Productom{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
     }
 }

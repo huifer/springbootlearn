@@ -1,6 +1,7 @@
 package com.lesson13.demo13.mapper;
 
-import com.example.demo.model.Customers;
+
+import com.lesson13.demo13.model.Customers;
 
 public interface CustomersMapper {
     int deleteByPrimaryKey(Long id);
